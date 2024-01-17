@@ -5,7 +5,7 @@ import java.time.Duration;
 import java.time.LocalTime;
 import java.util.Objects;
 
-public class Train {
+public class Train implements Comparable<Train>{
     private final @NotNull String code;
     private final @NotNull String destination;
     private final @NotNull LocalTime time;
@@ -56,4 +56,8 @@ public class Train {
     }
 
 
+    @Override
+    public int compareTo(@NotNull Train o) {
+        return time.plus(delay).compareTo(o.time.plus(o.delay));
+    }
 }
