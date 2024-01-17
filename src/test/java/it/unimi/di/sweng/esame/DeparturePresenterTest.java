@@ -14,7 +14,7 @@ public class DeparturePresenterTest {
     void updateTest(){
 
         DepartureView view = mock(DepartureView.class);
-        DeparturePresenter SUT = new DeparturePresenter(view);
+        DeparturePresenter SUT = new DeparturePresenter(view, 0);
         // mock dei treni
         Train train1 = mock(Train.class);
         when(train1.toString()).thenReturn("Cod1 Milano 14:12 10");

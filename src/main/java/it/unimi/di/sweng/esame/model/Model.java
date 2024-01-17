@@ -58,4 +58,9 @@ public class Model implements Observable<List<Train>> {
     observers.add(observer);
   }
 
+  public void departed(String trainCode) {
+    //remove ritorna l'oggetto rimosso se l'ha rimosso, altrimenti ritorna null
+    if (trains.remove(trainCode) != null)
+      notifyObservers();
+  }
 }

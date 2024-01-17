@@ -20,7 +20,7 @@ public class Train implements Comparable<Train>{
 
     @Override
     public String toString() {
-        return code + " " + destination + " " + time + " " + delay.toMinutes();
+        return String.format("%-9s %-25s %s %2d", code, destination, time, delay.toMinutes());
     }
 
     public @NotNull String code() {
