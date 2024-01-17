@@ -63,4 +63,16 @@ public class Model implements Observable<List<Train>> {
     if (trains.remove(trainCode) != null)
       notifyObservers();
   }
+
+  public void changeDelay(String code, int delay){
+    if(trains.containsKey(code)){
+      Train t = trains.get(code);
+      Train t1 = t.newDelay(Duration.ofMinutes(delay));
+      if(!t.equals(t1)){
+        trains.put(code,t1);
+        notifyObservers();
+      }
+    }
+  }
+
 }

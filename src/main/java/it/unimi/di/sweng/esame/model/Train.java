@@ -60,4 +60,12 @@ public class Train implements Comparable<Train>{
     public int compareTo(@NotNull Train o) {
         return time.plus(delay).compareTo(o.time.plus(o.delay));
     }
+
+    public @NotNull Train newDelay(Duration newDelay){
+        return new Train(code, destination, time, newDelay);
+    }
+
+    public Duration getDelay() {
+        return delay;
+    }
 }
