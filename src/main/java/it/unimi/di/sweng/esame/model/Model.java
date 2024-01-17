@@ -3,6 +3,9 @@ package it.unimi.di.sweng.esame.model;
 import it.unimi.di.sweng.esame.Main;
 import org.jetbrains.annotations.NotNull;
 import java.io.InputStream;
+import java.time.Duration;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import java.util.*;
 
 public class Model implements Observable<List<Train>> {
@@ -23,7 +26,13 @@ public class Model implements Observable<List<Train>> {
       String delay = el[3];
 
       //TODO sostituire la stampa con la memorizzazione all'interno del modello con una opportuna struttura dati
-      System.out.printf("cod: [%s] dest: [%s] time: [%s] delay: [%s]\n", cod, destination, depTime, delay);
+      //System.out.printf("cod: [%s] dest: [%s] time: [%s] delay: [%s]\n", cod, destination, depTime, delay);
+
+      trains.put(cod, new Train(
+              cod,
+              destination,
+              LocalTime.parse(depTime, DateTimeFormatter.ofPattern("H:m")),
+              Duration.ofMinutes(Integer.parseInt(delay))));
     }
   }
 

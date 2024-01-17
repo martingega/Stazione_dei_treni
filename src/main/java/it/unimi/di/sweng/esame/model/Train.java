@@ -8,7 +8,7 @@ public record Train(@NotNull String code, @NotNull String destination, @NotNull 
 
     @Override
     public String toString() {
-        return code + " " + destination + " " + time + " " + delay;
+        return code + " " + destination + " " + time + " " + delay.toMinutes();
     }
 
 }
