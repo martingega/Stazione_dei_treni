@@ -1,6 +1,7 @@
 package it.unimi.di.sweng.esame.model;
 
 import it.unimi.di.sweng.esame.Main;
+import it.unimi.di.sweng.esame.presenter.Observer;
 import org.jetbrains.annotations.NotNull;
 import java.io.InputStream;
 import java.time.Duration;
@@ -8,9 +9,11 @@ import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
 
+
 public class Model implements Observable<List<Train>> {
 
   private @NotNull final Map<String, Train> trains = new HashMap<>();
+  private List<Observer<List<Train>>> observers;
 
   public void readFile() {
     InputStream is = Main.class.getResourceAsStream("/trains.csv");
@@ -41,6 +44,18 @@ public class Model implements Observable<List<Train>> {
   @NotNull
   public List<Train> getState() {
     return new ArrayList<>(trains.values());
+  }
+
+  @Override
+  public void notifyObservers() {
+    for (Observer<List<Train>> observer : observers) {
+      observer.update(getState());
+    }
+  }
+
+  @Override
+  public void addObserver(@NotNull Observer<List<Train>> observer) {
+    observers.add(observer);
   }
 
 }

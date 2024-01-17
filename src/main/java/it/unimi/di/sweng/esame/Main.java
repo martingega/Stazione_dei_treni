@@ -48,7 +48,7 @@ public class Main extends Application {
     model.readFile();
 
     //HINT: utile dopo aver definito model per inizializzare viste
-    //model.notifyObservers();
+    model.notifyObservers();
 
     Scene scene = new Scene(gridPane);
     primaryStage.setScene(scene);
