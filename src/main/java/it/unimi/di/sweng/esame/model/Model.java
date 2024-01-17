@@ -13,7 +13,7 @@ import java.util.*;
 public class Model implements Observable<List<Train>> {
 
   private @NotNull final Map<String, Train> trains = new HashMap<>();
-  private List<Observer<List<Train>>> observers;
+  private @NotNull final List<Observer<List<Train>>> observers = new ArrayList<>();
 
   public void readFile() {
     InputStream is = Main.class.getResourceAsStream("/trains.csv");
